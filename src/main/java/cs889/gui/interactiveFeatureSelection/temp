@@ -1,0 +1,7 @@
+    m_ButtonConnect.setMnemonic('n');
+    m_ButtonConnect.addActionListener(new ActionListener() {
+	public void actionPerformed(ActionEvent e) {
+	  connect();
+	}
+      });
+    panel.add(m_ButtonConnect);
