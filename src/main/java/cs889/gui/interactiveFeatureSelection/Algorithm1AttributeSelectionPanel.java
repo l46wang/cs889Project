@@ -56,6 +56,8 @@ import cs889.gui.featureSelection.event.FeatureLoadEvent;
 import cs889.gui.featureSelection.event.FeatureLoadListener;
 import cs889.gui.interactiveFeatureSelection.AttributeSelectionPanel.AttributeTableModel;
 import cs889.gui.services.BaseTreeGeneration;
+import cs889.gui.services.ResGraphGeneration;
+import cs889.gui.utility.FeatureSelection;
 import cs889.gui.utility.FeatureSelectionUtil;
 
 /**
@@ -310,6 +312,20 @@ public class Algorithm1AttributeSelectionPanel
 		}
     	
     });
+    
+	m_VisualizedResButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg1) {
+				
+				try {
+					ResGraphGeneration.evalOutput(FeatureSelection.A1);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+	});
   }
   
   public Dimension getPreferredScrollableViewportSize() {

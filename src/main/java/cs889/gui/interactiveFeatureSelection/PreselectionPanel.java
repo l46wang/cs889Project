@@ -110,6 +110,7 @@ public class PreselectionPanel
   public static Instances a1SelectedInstances;
   public static Instances a2SelectedInstances;
   public static Instances mergedSelectedInstances;
+  public static Instances selectedInstances = null;
   
   
   
@@ -236,6 +237,22 @@ public class PreselectionPanel
 	  a2SelectedInstances = FeatureSelectionUtil.createA2Instances(this.getNumFeaturesSelected());
 	  
 	  mergedSelectedInstances = FeatureSelectionUtil.createInstances();
+	  
+	  selectedInstances= defaultUserSelection();
+	  for(int i = 0; i<selectedInstances.numAttributes(); i++){
+		  System.out.println(selectedInstances.attribute(i).name());
+	  }
+	  System.out.println("Done");
+  }
+  
+  private Instances defaultUserSelection() throws Exception{
+	  int numberFeatureSelected = this.getNumFeaturesSelected();
+	  ArrayList<Integer> orders = new ArrayList<Integer>();
+	  for(int i=0; i<numberFeatureSelected; i++){
+		  orders.add(i);
+	  }
+	  
+	  return FeatureSetRebuild.featureReordering(mergedSelectedInstances, orders);
   }
 
   /**
@@ -265,6 +282,7 @@ public class PreselectionPanel
     	  a2SelectedInstances = FeatureSelectionUtil.createA2Instances(this.getNumFeaturesSelected());
     	  
     	  mergedSelectedInstances = FeatureSelectionUtil.createInstances();
+    	  selectedInstances = mergedSelectedInstances;
     	  
       } catch (Exception e) {
 		// TODO Auto-generated catch block

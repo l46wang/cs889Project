@@ -52,10 +52,12 @@ import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.BorderFactory;
 
+import oracle.jrockit.jfr.openmbean.PresetFileType;
 import cs889.gui.featureSelection.event.FeatureLoadEvent;
 import cs889.gui.featureSelection.event.FeatureLoadListener;
 import cs889.gui.services.BaseTreeGeneration;
 import cs889.gui.services.ResGraphGeneration;
+import cs889.gui.utility.FeatureSelection;
 import cs889.gui.utility.FeatureSelectionUtil;
 
 /**
@@ -80,6 +82,8 @@ public class AttributeSelectionPanel
 
   /** for serialization */
   private static final long serialVersionUID = 627131485290359194L;
+
+  
 
   /**
    * A table model that looks at the names of attributes and maintains
@@ -217,10 +221,10 @@ public class AttributeSelectionPanel
     	  fireTableRowsUpdated(0, m_Selected.length);
       }
       try {
-		Instances temp = this.getSelectedInstances();
+    	PreselectionPanel.selectedInstances = this.getSelectedInstances();
 		System.out.println("The selected attributes are:");
-		for(int i = 0; i<temp.numAttributes(); i++){
-			System.out.println("The attribute "+i+" "+temp.attribute(i).name());
+		for(int i = 0; i<PreselectionPanel.selectedInstances.numAttributes(); i++){
+			System.out.println("The attribute "+i+" "+PreselectionPanel.selectedInstances.attribute(i).name());
 		}
 		System.out.println("================================");
 	} catch (Exception e) {
@@ -340,7 +344,7 @@ public class AttributeSelectionPanel
 		public void actionPerformed(ActionEvent arg1) {
 			
 			try {
-				ResGraphGeneration.evalOutput();
+				ResGraphGeneration.evalOutput(FeatureSelection.USER);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

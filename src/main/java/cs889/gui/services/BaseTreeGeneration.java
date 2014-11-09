@@ -82,7 +82,7 @@ public class BaseTreeGeneration {
 		J48 cls = new J48();
 		String[] options = {"-L", "True"};
 		cls.setOptions(options);
-	    Instances ins = new Instances(new BufferedReader(new FileReader(FeatureSelection.fileName))); 
+	    Instances ins = PreselectionPanel.selectedInstances; 
 		ins.setClassIndex(ins.numAttributes() - 1);
 	     cls.buildClassifier(ins);
 	 
