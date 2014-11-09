@@ -15,7 +15,7 @@ public class FeatureSelectionUtil {
 	 * @return instances contain only the selected features 
 	 * @throws Exception
 	 */
-	
+	public static final int FOLDS = 10;
 	public static Instances getInstance(Instances org, ArrayList<Integer> selectedAttributeIndices) throws Exception{
 		
 		String deleteString = "";

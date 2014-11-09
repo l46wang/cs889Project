@@ -55,6 +55,7 @@ import javax.swing.BorderFactory;
 import cs889.gui.featureSelection.event.FeatureLoadEvent;
 import cs889.gui.featureSelection.event.FeatureLoadListener;
 import cs889.gui.services.BaseTreeGeneration;
+import cs889.gui.services.ResGraphGeneration;
 import cs889.gui.utility.FeatureSelectionUtil;
 
 /**
@@ -302,6 +303,7 @@ public class AttributeSelectionPanel
   
   
   protected JButton m_VisualizedTreeButton = new JButton("Visualized Rules");
+  protected JButton m_VisualizedResultButton = new JButton("Result");
   
   /**
    * Creates the attribute selection panel with no initial instances.
@@ -323,13 +325,28 @@ public class AttributeSelectionPanel
 
     m_Table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
     m_Table.setColumnSelectionAllowed(false); 
-    m_Table.setPreferredScrollableViewportSize(new Dimension(500, 150));
+    m_Table.setPreferredScrollableViewportSize(new Dimension(600, 150));
     add(new JScrollPane(m_Table), BorderLayout.CENTER);
     JPanel panel = new JPanel(new FlowLayout());
     m_VisualizedTreeButton.setMnemonic('V');
     panel.add(m_VisualizedTreeButton);
+    panel.add(m_VisualizedResultButton);
     add(panel, BorderLayout.WEST);
     //m_VisualizedTreeButton.addActionListener(new TreeGenerationListener(m_Model.m_Instances));
+    
+    m_VisualizedResultButton.addActionListener(new ActionListener() {
+		
+		@Override
+		public void actionPerformed(ActionEvent arg1) {
+			
+			try {
+				ResGraphGeneration.evalOutput();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	});
     
     m_VisualizedTreeButton.addActionListener(new ActionListener(){
     	
@@ -379,7 +396,7 @@ public class AttributeSelectionPanel
       m_Model.setInstances(newInstances,numSelection);
       //m_Table.clearSelection();
     }
-    m_Table.sizeColumnsToFit(2);
+    m_Table.sizeColumnsToFit(numSelection);
     m_Table.revalidate();
     m_Table.repaint();
   }

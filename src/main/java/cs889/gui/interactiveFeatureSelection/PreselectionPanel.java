@@ -120,6 +120,9 @@ public class PreselectionPanel
 //  public static int numFeaturesSelected = 0;
   public int getNumFeaturesSelected() {
 	int index = m_ClassCombo.getSelectedIndex();
+	if(index <0){
+		index = 0;
+	}
 	return new Integer(numFeatures[index]);
  }
 
@@ -155,6 +158,7 @@ public class PreselectionPanel
     catch (Exception e) {
       e.printStackTrace();
     }
+    
     
     createPanel();
   }
@@ -207,7 +211,13 @@ public class PreselectionPanel
 		}
     	
     });
-
+    
+    try {
+		this.initalAttributes();
+	} catch (Exception e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
     
   }
 
@@ -220,6 +230,13 @@ public class PreselectionPanel
 	  m_ConnectionListeners.add(l);
   }
   
+  public void initalAttributes() throws Exception{
+	  a1SelectedInstances = FeatureSelectionUtil.createA1Instances(this.getNumFeaturesSelected());
+	  
+	  a2SelectedInstances = FeatureSelectionUtil.createA2Instances(this.getNumFeaturesSelected());
+	  
+	  mergedSelectedInstances = FeatureSelectionUtil.createInstances();
+  }
 
   /**
    * notifies the connection listeners of the event.

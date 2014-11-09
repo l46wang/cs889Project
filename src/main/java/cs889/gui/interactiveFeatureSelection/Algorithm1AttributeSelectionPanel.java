@@ -264,6 +264,7 @@ public class Algorithm1AttributeSelectionPanel
   
   
   protected JButton m_VisualizedTreeButton = new JButton("Visualized Rules");
+  protected JButton m_VisualizedResButton = new JButton(" Results");
   
   /**
    * Creates the attribute selection panel with no initial instances.
@@ -282,15 +283,18 @@ public class Algorithm1AttributeSelectionPanel
   public Algorithm1AttributeSelectionPanel(boolean include, boolean remove, boolean invert,
       boolean pattern) {
 
-
+	setLayout(new BorderLayout());
     m_Table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
     m_Table.setColumnSelectionAllowed(false); 
-    m_Table.setPreferredScrollableViewportSize(new Dimension(500, 150));
+    m_Table.setPreferredScrollableViewportSize(new Dimension(400, 150));
     add(new JScrollPane(m_Table), BorderLayout.CENTER);
+//    JPanel panel_Buttons = new JPanel(new BorderLayout());
     JPanel panel = new JPanel(new FlowLayout());
     m_VisualizedTreeButton.setMnemonic('V');
     panel.add(m_VisualizedTreeButton);
-    add(panel, BorderLayout.WEST);
+    panel.add(m_VisualizedResButton);
+//    panel_Buttons.add(panel);
+    add(panel, BorderLayout.SOUTH);
     
     m_VisualizedTreeButton.addActionListener(new ActionListener(){
     	

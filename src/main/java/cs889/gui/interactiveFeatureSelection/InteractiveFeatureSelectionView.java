@@ -14,16 +14,12 @@
  *    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
 
-/*
- * SqlViewer.java
- * Copyright (C) 2005 University of Waikato, Hamilton, New Zealand
- *
- */
 
 package cs889.gui.interactiveFeatureSelection;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.BufferedInputStream;
@@ -35,6 +31,7 @@ import java.io.IOException;
 import java.util.Properties;
 
 import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
 import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -148,6 +145,8 @@ public class InteractiveFeatureSelectionView extends JPanel implements FeatureLo
   protected void createPanel() {
     JPanel panel;
     JPanel panel2;
+    JPanel panel3 = new JPanel();
+    
 
     setLayout(new BorderLayout());
 
@@ -195,6 +194,7 @@ public class InteractiveFeatureSelectionView extends JPanel implements FeatureLo
         BorderFactory.createEmptyBorder(0, 5, 5, 5)));
     panel2.add(m_AttPanel, BorderLayout.WEST);
     panel.add(panel2, BorderLayout.NORTH);
+    panel.add(panel3, BorderLayout.CENTER);
     
     // Algorithm1
     try {
@@ -205,14 +205,15 @@ public class InteractiveFeatureSelectionView extends JPanel implements FeatureLo
 	}
     
     panel2 = new JPanel(new BorderLayout());
-
+    panel3.setLayout(new BoxLayout(panel3, BoxLayout.X_AXIS));
+    
     panel2
     .setBorder(BorderFactory.createCompoundBorder(
       BorderFactory
         .createTitledBorder("Algorithm1 Feature Selection"),
       BorderFactory.createEmptyBorder(0, 5, 5, 5)));
     panel2.add(m_A1AttPanel, BorderLayout.WEST);
-    panel.add(panel2, BorderLayout.CENTER);
+    panel3.add(panel2);
     
     
     //Algorithm2
@@ -231,7 +232,7 @@ public class InteractiveFeatureSelectionView extends JPanel implements FeatureLo
         .createTitledBorder("Algorithm2 Feature Selection"),
       BorderFactory.createEmptyBorder(0, 5, 5, 5)));
     panel2.add(m_A2AttPanel, BorderLayout.WEST);
-    panel.add(panel2, BorderLayout.SOUTH);
+    panel3.add(panel2);
 
     // listeners
     addFeatureLoadListener(this);
