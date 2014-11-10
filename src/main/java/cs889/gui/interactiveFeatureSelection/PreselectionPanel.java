@@ -282,7 +282,7 @@ public class PreselectionPanel
     	  a2SelectedInstances = FeatureSelectionUtil.createA2Instances(this.getNumFeaturesSelected());
     	  
     	  mergedSelectedInstances = FeatureSelectionUtil.createInstances();
-    	  selectedInstances = mergedSelectedInstances;
+    	  selectedInstances = FeatureSelectionUtil.getInstance(mergedSelectedInstances, this.getNumFeaturesSelected());
     	  
       } catch (Exception e) {
 		// TODO Auto-generated catch block

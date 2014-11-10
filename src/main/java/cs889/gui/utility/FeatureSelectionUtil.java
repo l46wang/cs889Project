@@ -16,6 +16,14 @@ public class FeatureSelectionUtil {
 	 * @throws Exception
 	 */
 	public static final int FOLDS = 10;
+	
+	public static Instances getInstance(Instances instances, int numSelected) throws Exception{
+		ArrayList<Integer> orders = new ArrayList<Integer>();
+		for(int i = 0; i<numSelected; i++){
+			orders.add(i);
+		}
+		return getInstance(instances, orders);
+	}
 	public static Instances getInstance(Instances org, ArrayList<Integer> selectedAttributeIndices) throws Exception{
 		
 		String deleteString = "";

@@ -212,6 +212,7 @@ public class Algorithm1AttributeSelectionPanel
 		Instances temp = this.getSelectedInstances();
 		System.out.println("The selected attributes are:");
 		for(int i = 0; i<temp.numAttributes(); i++){
+			System.out.println("The attribute "+i+" ");
 			System.out.println("The attribute "+i+" "+temp.attribute(i).name());
 		}
 		System.out.println("================================");
