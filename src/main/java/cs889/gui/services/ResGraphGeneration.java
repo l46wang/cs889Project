@@ -41,7 +41,6 @@ public class ResGraphGeneration {
 	/**
 	 * Adding wrapper call function
 	 * @param inst
-	 * @throws Exception
 	 */
 	public static void evalOutput(int fSetIndicator) throws Exception{
 		switch(fSetIndicator){
