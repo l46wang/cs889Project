@@ -29,7 +29,15 @@ import static com.googlecode.charts4j.UrlUtil.normalize;
 public class ResGraphGeneration {
 
 	private static Instances ins = null;
-	
+	public static ArrayList<Color> colors = new ArrayList<Color>();
+	static {
+		 
+		 colors.add(Color.AQUA);
+		 colors.add(Color.RED);
+		 colors.add(Color.BLACK);
+		 colors.add(Color.ROYALBLUE);
+		 colors.add(Color.HONEYDEW);
+	 }
 	/**
 	 * Adding wrapper call function
 	 * @param inst
@@ -103,8 +111,9 @@ public class ResGraphGeneration {
                     URL _url = new URL(url);
                     BufferedImage image = ImageIO.read(_url);
                     JLabel label = new JLabel(new ImageIcon(image));
-                    JFrame f = new JFrame();
-                    f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    final javax.swing.JFrame f = 
+                 	       new javax.swing.JFrame("Accuracy results based on current selected features");
+//                    f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                     f.getContentPane().add(label);
                     f.pack();
                     f.setLocation(200, 200);
@@ -115,15 +124,7 @@ public class ResGraphGeneration {
 		
 	}
 	
-	 public static ArrayList<Color> colors = new ArrayList<Color>();
-	 static {
-		 
-		 colors.add(Color.AQUA);
-		 colors.add(Color.RED);
-		 colors.add(Color.BLACK);
-		 colors.add(Color.ROYALBLUE);
-		 colors.add(Color.HONEYDEW);
-	 }
+	
 	
 	 public static String drawTheResult(double[][] res, String[] labels) {
 	        // EXAMPLE CODE START
@@ -153,8 +154,7 @@ public class ResGraphGeneration {
 	        contrentricAxisLabels.setAxisStyle(AxisStyle.newAxisStyle(BLACK, 12, AxisTextAlignment.RIGHT));
 	        chart.addConcentricAxisLabels(contrentricAxisLabels);
 	        String url = chart.toURLString();
-	        // EXAMPLE CODE END. Use this url string in your web or
-	        // Internet application.
+	   
 	        return url;
 	    }
 	
