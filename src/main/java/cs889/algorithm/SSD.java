@@ -14,6 +14,7 @@ import cs889.gui.utility.FeatureSelectionUtil;
 import weka.core.Instances;
 
 public class SSD {
+	//tst
 	/**
 	public static final String[] a1Instances = {"A","C","B","E","D" };
 	public static final String[] a2Instances = {"A","D","E","C","B" };
