@@ -111,4 +111,21 @@ public class FeatureSelectionUtil {
 	}
 	
 	
+	/**
+	 * Create Instances for the default a3 list based on the given numSelections
+	 * @param numSelections
+	 * @return
+	 * @throws Exception
+	 */
+	public static Instances createA3Instances(int numSelections) throws Exception{
+		Instances instances = new Instances(new java.io.BufferedReader(
+				  new java.io.FileReader(FeatureSelection.A3_DES)));
+		
+		ArrayList<Integer> selectedAttributeIndices =new ArrayList<Integer>();
+        for(int i= 0; i<numSelections; i++){
+    		selectedAttributeIndices.add(i);
+    	  }
+        Instances resultInstances = FeatureSelectionUtil.getInstance(instances, selectedAttributeIndices);
+		return resultInstances;
+	}
 }

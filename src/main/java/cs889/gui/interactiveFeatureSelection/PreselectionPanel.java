@@ -78,6 +78,7 @@ public class PreselectionPanel
 		instances = new Instances(new BufferedReader(new FileReader(FeatureSelection.fileName)));
 		 FeatureSetRebuild.reorderFeaturesA1(instances);
 		 FeatureSetRebuild.reorderFeaturesA2(instances);
+		 FeatureSetRebuild.reorderFeaturesA3(instances);
 		 FeatureSetRebuild.reorderUserSelectFeatures();
 	} catch (IOException e) {
 		// TODO Auto-generated catch block
@@ -109,6 +110,7 @@ public class PreselectionPanel
   //instances
   public static Instances a1SelectedInstances;
   public static Instances a2SelectedInstances;
+  public static Instances a3SelectedInstances;
   public static Instances mergedSelectedInstances;
   public static Instances selectedInstances = null;
   
@@ -236,6 +238,8 @@ public class PreselectionPanel
 	  
 	  a2SelectedInstances = FeatureSelectionUtil.createA2Instances(this.getNumFeaturesSelected());
 	  
+	  a3SelectedInstances = FeatureSelectionUtil.createA3Instances(this.getNumFeaturesSelected());
+	  
 	  mergedSelectedInstances = FeatureSelectionUtil.createInstances();
 	  
 	  selectedInstances= defaultUserSelection();
@@ -280,7 +284,7 @@ public class PreselectionPanel
     	  a1SelectedInstances = FeatureSelectionUtil.createA1Instances(this.getNumFeaturesSelected());
     	  
     	  a2SelectedInstances = FeatureSelectionUtil.createA2Instances(this.getNumFeaturesSelected());
-    	  
+    	  a3SelectedInstances = FeatureSelectionUtil.createA3Instances(this.getNumFeaturesSelected());
     	  mergedSelectedInstances = FeatureSelectionUtil.createInstances();
     	  selectedInstances = FeatureSelectionUtil.getInstance(mergedSelectedInstances, this.getNumFeaturesSelected());
     	  

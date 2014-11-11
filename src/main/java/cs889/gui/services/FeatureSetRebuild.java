@@ -15,6 +15,7 @@ import weka.attributeSelection.FilteredAttributeEval;
 import weka.attributeSelection.GainRatioAttributeEval;
 import weka.attributeSelection.GreedyStepwise;
 import weka.attributeSelection.InfoGainAttributeEval;
+import weka.attributeSelection.OneRAttributeEval;
 import weka.attributeSelection.Ranker;
 import weka.attributeSelection.ReliefFAttributeEval;
 import weka.core.Instances;
@@ -63,6 +64,9 @@ public class FeatureSetRebuild {
 				break;
 			case FeatureSelection.A2:
 				fileDesitination = FeatureSelection.A2_DES;
+				break;
+			case FeatureSelection.A3:
+				fileDesitination = FeatureSelection.A3_DES;
 				break;
 			default:
 				fileDesitination = FeatureSelection.Test_DES;
@@ -120,6 +124,26 @@ public class FeatureSetRebuild {
 	 	// generate new data
 	 	Instances newData = Filter.useFilter(inst, filter);
 	 	saveInstancesInFiles(newData, FeatureSelection.A2);
+	}
+	
+	
+	/**
+	 * Algorithm 3 is information gain attribute selection. 
+	 * @param inst
+	 * @throws Exception
+	 */
+	public static void reorderFeaturesA3(Instances inst) throws Exception{
+		/* Load the iris data set */
+
+		AttributeSelection filter = new AttributeSelection();  // package weka.filters.supervised.attribute!
+		OneRAttributeEval  eval = new OneRAttributeEval();
+		Ranker search = new Ranker ();
+		filter.setEvaluator(eval);
+	 	filter.setSearch(search);
+	 	filter.setInputFormat(inst);
+	 	// generate new data
+	 	Instances newData = Filter.useFilter(inst, filter);
+	 	saveInstancesInFiles(newData, FeatureSelection.A3);
 	}
 	
 	public static void main(String[] args) throws Exception{

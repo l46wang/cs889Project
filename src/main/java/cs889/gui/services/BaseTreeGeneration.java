@@ -46,6 +46,31 @@ public class BaseTreeGeneration {
 	     tv.fitToScreen();
 	}
 	
+	public static void generateTreeA3() throws Exception{
+		J48 cls = new J48();
+	    Instances ins = PreselectionPanel.a3SelectedInstances;
+	 
+		ins.setClassIndex(ins.numAttributes() - 1);
+	     cls.buildClassifier(ins);
+	 
+	     // display classifier
+	     final javax.swing.JFrame jf = 
+	       new javax.swing.JFrame("Weka Classifier Tree Visualizer: J48");
+	     jf.setSize(500,400);
+	     jf.getContentPane().setLayout(new BorderLayout());
+	     TreeVisualizer tv = new TreeVisualizer(null,
+	         cls.graph(),
+	         new PlaceNode2());
+	     jf.getContentPane().add(tv, BorderLayout.CENTER);
+	     jf.addWindowListener(new java.awt.event.WindowAdapter() {
+	       public void windowClosing(java.awt.event.WindowEvent e) {
+	         jf.dispose();
+	       }
+	     });
+	 
+	     jf.setVisible(true);
+	     tv.fitToScreen();
+	}
 	
 	public static void generateTreeA1() throws Exception{
 		J48 cls = new J48();

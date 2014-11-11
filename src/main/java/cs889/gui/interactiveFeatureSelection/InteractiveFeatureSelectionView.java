@@ -100,6 +100,8 @@ public class InteractiveFeatureSelectionView extends JPanel implements FeatureLo
   
   protected Algorithm2AttributeSelectionPanel m_A2AttPanel = new Algorithm2AttributeSelectionPanel();
   
+  protected Algorithm3AttributeSelectionPanel m_A3AttPanel = new Algorithm3AttributeSelectionPanel();
+  
   /** the result panel. */
   protected ResultPanel m_ResultPanel;
 
@@ -175,9 +177,7 @@ public class InteractiveFeatureSelectionView extends JPanel implements FeatureLo
 	    ListSelectionModel lm = (ListSelectionModel) e.getSource();
 	    for (int i = e.getFirstIndex(); i <= e.getLastIndex(); i++) {
 	      if (lm.isSelectedIndex(i)) {
-		//m_AttSummaryPanel.setAttribute(i);
-		//m_AttVisualizePanel.setAttribute(i);
-		break;
+	    	  break;
 	      }
 	    }
 	  }
@@ -234,6 +234,25 @@ public class InteractiveFeatureSelectionView extends JPanel implements FeatureLo
     panel2.add(m_A2AttPanel, BorderLayout.WEST);
     panel3.add(panel2);
 
+    //Algorithm3
+    try {
+		m_A3AttPanel.setInstances(FeatureSelectionUtil.createInstances(), m_ConnectionPanel.getNumFeaturesSelected());
+	} catch (IOException e1) {
+		// TODO Auto-generated catch block
+		e1.printStackTrace();
+	}
+    
+    panel2 = new JPanel(new BorderLayout());
+
+    panel2
+    .setBorder(BorderFactory.createCompoundBorder(
+      BorderFactory
+        .createTitledBorder("Algorithm3 Feature Selection"),
+      BorderFactory.createEmptyBorder(0, 5, 5, 5)));
+    panel2.add(m_A3AttPanel, BorderLayout.WEST);
+    panel3.add(panel2);
+    
+    
     // listeners
     addFeatureLoadListener(this);
     addFeatureLoadListener(m_AttPanel);
@@ -252,6 +271,7 @@ public class InteractiveFeatureSelectionView extends JPanel implements FeatureLo
   	this.m_AttPanel.connectionChange(evt);
   	this.m_A1AttPanel.connectionChange(evt);
   	this.m_A2AttPanel.connectionChange(evt);
+  	this.m_A3AttPanel.connectionChange(evt);
   }
 
   /**

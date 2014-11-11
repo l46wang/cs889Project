@@ -46,8 +46,8 @@ public class ResGraphGeneration {
 			case FeatureSelection.A2:
 				ins = PreselectionPanel.a2SelectedInstances;
 				break;
-//			case FeatureSelection.A3:
-//				ins = PreselectionPanel.a1SelectedInstances
+			case FeatureSelection.A3:
+				ins = PreselectionPanel.a3SelectedInstances;
 			default: break;
 		}
 		

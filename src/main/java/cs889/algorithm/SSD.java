@@ -60,7 +60,7 @@ public class SSD {
 			defaultIns = new Instances(new BufferedReader(new FileReader(FeatureSelection.fileName)));
 			A1Ins = new Instances(new BufferedReader(new FileReader(FeatureSelection.A1_DES)));
 			A2Ins = new Instances(new BufferedReader(new FileReader(FeatureSelection.A2_DES)));
-			A3Ins = new Instances(new BufferedReader(new FileReader(FeatureSelection.Test_DES)));
+			A3Ins = new Instances(new BufferedReader(new FileReader(FeatureSelection.A3_DES)));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
