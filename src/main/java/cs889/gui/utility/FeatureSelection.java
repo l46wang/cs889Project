@@ -1,5 +1,12 @@
 package cs889.gui.utility;
 
+import org.apache.log4j.Logger;
+
+import cs889.gui.interactiveFeatureSelection.Algorithm1AttributeSelectionPanel;
+import cs889.gui.interactiveFeatureSelection.Algorithm2AttributeSelectionPanel;
+import cs889.gui.interactiveFeatureSelection.Algorithm3AttributeSelectionPanel;
+import cs889.gui.interactiveFeatureSelection.AttributeSelectionPanel;
+
 public interface FeatureSelection {
 	
 	public static final String fileName = "./data/census_income.arff";
@@ -19,4 +26,13 @@ public interface FeatureSelection {
 	public static final int A1 = 1;
 	public static final int A2 = 2;
 	public static final int A3 = 3;
+	
+	//Define the Logger file
+	public static Logger log4jUser = Logger.getLogger(AttributeSelectionPanel.class.getName());
+	public static Logger log4jA1 = Logger.getLogger(Algorithm1AttributeSelectionPanel.class.getName());
+	public static Logger log4jA2 = Logger.getLogger(Algorithm2AttributeSelectionPanel.class.getName());
+	public static Logger log4jA3 = Logger.getLogger(Algorithm3AttributeSelectionPanel.class.getName());
+	
+	public static Logger log4j = Logger.getLogger(FeatureSelection.class.getName());
+
 }

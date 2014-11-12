@@ -15,18 +15,19 @@ import weka.gui.treevisualizer.PlaceNode2;
 import weka.gui.treevisualizer.TreeVisualizer;
 import cs889.gui.interactiveFeatureSelection.PreselectionPanel;
 import cs889.gui.utility.FeatureSelection;
+import cs889.gui.utility.FeatureSelectionLog;
 import cs889.gui.utility.FeatureSelectionUtil;
 
 public class BaseTreeGeneration {
 	public static void generateTreeA2() throws Exception{
 		J48 cls = new J48();
 	    Instances ins = PreselectionPanel.a2SelectedInstances;
-	 
-	    System.out.println(ins==null);
-	    System.out.println(ins.numAttributes());
 		ins.setClassIndex(ins.numAttributes() - 1);
 	     cls.buildClassifier(ins);
-	 
+	     
+	     FeatureSelection.log4jA2.debug("Activity: view Tree");
+	     FeatureSelectionLog.logResult(ins, FeatureSelection.log4jA2);
+	     
 	     // display classifier
 	     final javax.swing.JFrame jf = 
 	       new javax.swing.JFrame("Weka Classifier Tree Visualizer: J48");
@@ -53,6 +54,9 @@ public class BaseTreeGeneration {
 		ins.setClassIndex(ins.numAttributes() - 1);
 	     cls.buildClassifier(ins);
 	 
+	     FeatureSelection.log4jA3.debug("Activity: view Tree");
+	     FeatureSelectionLog.logResult(ins, FeatureSelection.log4jA3);
+	     
 	     // display classifier
 	     final javax.swing.JFrame jf = 
 	       new javax.swing.JFrame("Weka Classifier Tree Visualizer: J48");
@@ -82,6 +86,9 @@ public class BaseTreeGeneration {
 		ins.setClassIndex(ins.numAttributes() - 1);
 	     cls.buildClassifier(ins);
 	 
+	     FeatureSelection.log4jA1.debug("Activity: view Tree");
+	     FeatureSelectionLog.logResult(ins, FeatureSelection.log4jA1);
+	     
 	     // display classifier
 	     final javax.swing.JFrame jf = 
 	       new javax.swing.JFrame("Weka Classifier Tree Visualizer: J48");
@@ -108,6 +115,9 @@ public class BaseTreeGeneration {
 		String[] options = {"-L", "True"};
 		cls.setOptions(options);
 	    Instances ins = PreselectionPanel.selectedInstances; 
+	     FeatureSelection.log4jUser.debug("Activity: view Tree");
+	     FeatureSelectionLog.logResult(ins, FeatureSelection.log4jUser);
+	    
 		ins.setClassIndex(ins.numAttributes() - 1);
 	     cls.buildClassifier(ins);
 	 

@@ -22,6 +22,7 @@ import com.googlecode.charts4j.*;
 
 import cs889.gui.interactiveFeatureSelection.PreselectionPanel;
 import cs889.gui.utility.FeatureSelection;
+import cs889.gui.utility.FeatureSelectionLog;
 import cs889.gui.utility.FeatureSelectionUtil;
 import static com.googlecode.charts4j.Color.*;
 import static com.googlecode.charts4j.UrlUtil.normalize;
@@ -39,20 +40,29 @@ public class ResGraphGeneration {
 		switch(fSetIndicator){
 			case FeatureSelection.USER:
 				ins = PreselectionPanel.selectedInstances;
+			     FeatureSelection.log4jUser.debug("Activity: view Result");
+			     FeatureSelectionLog.logResult(ins, FeatureSelection.log4jUser);
 				break;
 			case FeatureSelection.A1:
 				ins = PreselectionPanel.a1SelectedInstances;
+			     FeatureSelection.log4jA1.debug("Activity: view Result");
+			     FeatureSelectionLog.logResult(ins, FeatureSelection.log4jA1);
 				break;
 			case FeatureSelection.A2:
 				ins = PreselectionPanel.a2SelectedInstances;
+			     FeatureSelection.log4jA2.debug("Activity: view Result");
+			     FeatureSelectionLog.logResult(ins, FeatureSelection.log4jA2);
 				break;
 			case FeatureSelection.A3:
 				ins = PreselectionPanel.a3SelectedInstances;
+			     FeatureSelection.log4jA3.debug("Activity: view Result");
+			     FeatureSelectionLog.logResult(ins, FeatureSelection.log4jA3);
 			default: break;
 		}
 		
 		evalOutput();
 	}
+	
 	
 	public static void evalOutput() throws Exception{
 		J48 cls = new J48();
@@ -77,7 +87,6 @@ public class ResGraphGeneration {
 			res[i][4] = eval.fMeasure(i);
 			res[i][5] = eval.areaUnderROC(i);
 			res[i][6] = res[i][0];
-			
 			labels[i] = ins.classAttribute().value(i);
 			
 		}
@@ -146,7 +155,7 @@ public class ResGraphGeneration {
 	        RadarChart chart = GCharts.newRadarChart(plot);
 	        chart.setTitle("Result based on current features", BLACK, 20);
 	        chart.setSize(500, 600);
-	        RadialAxisLabels radialAxisLabels = AxisLabelsFactory.newRadialAxisLabels("TP Rate", "FP Rate", "Precision", "Recall", "F-Measure", "ROC Area");
+	        RadialAxisLabels radialAxisLabels = AxisLabelsFactory.newRadialAxisLabels("TP Rate", "FP Rate", "Precision", "Recall","F-Measure", "ROC Area");
 	        radialAxisLabels.setRadialAxisStyle(BLACK, 12);
 	        chart.addRadialAxisLabels(radialAxisLabels);
 	        AxisLabels contrentricAxisLabels = AxisLabelsFactory.newNumericAxisLabels(Arrays.asList(0, 0.2, 0.4, 0.6, 0.8, 1.0));
