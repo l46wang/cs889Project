@@ -16,6 +16,8 @@ public class FeatureSelectionUtil {
 	 * @throws Exception
 	 */
 	public static final int FOLDS = 10;
+	//Selected Node label
+	public static String selectedLabel = "";
 	
 	public static Instances getInstance(Instances instances, int numSelected) throws Exception{
 		ArrayList<Integer> orders = new ArrayList<Integer>();

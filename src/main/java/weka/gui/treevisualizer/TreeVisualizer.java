@@ -898,6 +898,12 @@ public class TreeVisualizer
 	if ((inst = m_nodes[m_focusNode].m_node.getInstances()) != null) {
 	  VisualizePanel pan = new VisualizePanel();
 	  pan.setInstances(inst);
+//	  System.out.println(inst.classIndex());
+	 
+	  
+//	  inst.deleteAttributeAt(idx);
+//	  
+//	  System.out.println(m_nodes[m_focusNode - 1].m_node.getInstances().attribute(idx).toString());
 	  JFrame nf = new JFrame();
 	  nf.setSize(400, 300);
 	  nf.getContentPane().add(pan);
@@ -918,10 +924,24 @@ public class TreeVisualizer
     else if (e.getActionCommand().equals(Messages.getInstance().getString("TreeVisualizer_ActionPerformed_CreateChildNodes_Text"))) {
       if (m_focusNode >= 0) {
 	if (m_listener != null) {
+		 Node node = m_nodes[m_focusNode].m_node;// obtain the selected node on the tree!!
+//		 System.out.println(node.getLabel());
+//		 int idx =0;
+//		 String[] labels = node.getLabel().split(" ");
+//		 String label = labels[0];
+//		 Instances inst = node.getInstances();
+//		 for(int i =0; i < inst.numAttributes(); i++) {
+//			  if(inst.attribute(i).name().equals(label)) {
+//				  
+//					  idx = i;
+//					  break;
+//				  }
+//			  }
+		  
 	  //then send message to the listener
 	  m_listener.userCommand(new TreeDisplayEvent
 	    (TreeDisplayEvent.ADD_CHILDREN, 
-	     m_nodes[m_focusNode].m_node.getRefer()));
+	     node.getLabel()));
 	}
 	else {
 	  JOptionPane.showMessageDialog(this, Messages.getInstance().getString("TreeVisualizer_ActionPerformed_JOptionPaneShowMessageDialog_Text_Sixth"),

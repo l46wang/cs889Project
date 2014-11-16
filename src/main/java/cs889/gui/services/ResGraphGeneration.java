@@ -71,7 +71,7 @@ public class ResGraphGeneration {
 	    Random rand = new Random(1);  // using seed = 1
 	    
 	    eval.crossValidateModel(cls, ins, FeatureSelectionUtil.FOLDS, rand);
-	    System.out.println(eval.toClassDetailsString());
+//	    System.out.println(eval.toClassDetailsString());
 	    
 	    int _numOfClasses = ins.numClasses();
 	    double[][] res = new double[_numOfClasses + 1][7];
@@ -98,12 +98,12 @@ public class ResGraphGeneration {
 		res[_numOfClasses][6] = res[_numOfClasses][0];
 		
 		String pic = drawTheResult(res, labels);
-		System.out.println(pic);
-		display(pic);
+//		System.out.println(pic);
+		display(pic, "Accuracy results based on current selected features");
 		
 	}
 	
-	private static void display(String url) {
+	private static void display(String url, String title) {
 		
                 try {
                    
@@ -111,7 +111,7 @@ public class ResGraphGeneration {
                     BufferedImage image = ImageIO.read(_url);
                     JLabel label = new JLabel(new ImageIcon(image));
                     final javax.swing.JFrame f = 
-                 	       new javax.swing.JFrame("Accuracy results based on current selected features");
+                 	       new javax.swing.JFrame(title);
 //                    f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                     f.getContentPane().add(label);
                     f.pack();
@@ -156,6 +156,91 @@ public class ResGraphGeneration {
 	   
 	        return url;
 	    }
+
+	public static void evalOutputAll() throws Exception {
+		
+		// generate evaluation for each feature set
+		
+		Random rand = new Random(1);  // using seed = 1
+		ArrayList<Instances> ins = new ArrayList<Instances>();
+		ins.add(PreselectionPanel.selectedInstances);
+		ins.add(PreselectionPanel.a1SelectedInstances);
+		ins.add(PreselectionPanel.a2SelectedInstances);
+		int cols = 0;
+	    double[][] res = new double[3][6];
+
+		for (Instances in : ins) {
+			J48 cls = new J48();
+			
+			in.setClassIndex(in.numAttributes() - 1);
+			cls.buildClassifier(in);
+			Evaluation eva = new Evaluation(in); 	    
+		    eva.crossValidateModel(cls, in, FeatureSelectionUtil.FOLDS, rand);
+		    
+		    res[cols][0]= eva.weightedTruePositiveRate();
+		    res[cols][1]= eva.weightedFalsePositiveRate();
+		    res[cols][2]= eva.weightedPrecision();
+		    res[cols][3]= eva.weightedRecall();
+		    res[cols][4]= eva.weightedFMeasure();
+		    res[cols][5]= eva.weightedAreaUnderROC();
+		    cols++;
+		}
+		
+		
+		String pic = drawBarChart(res);
+		System.out.println(pic);
+		display(pic, "Accuracy results for all");
+	    
+	}
+
+	private static String drawBarChart(double[][] res) {
+		// TODO Auto-generated method stub
+		
+		// Defining data series.
+        
+        Data userdata= DataUtil.scaleWithinRange(0.0, 1.0, res[0]);
+        Data a1data= DataUtil.scaleWithinRange(0.0, 1.0, res[1]);
+        Data a2data= DataUtil.scaleWithinRange(0.0, 1.0, res[2]);
+        BarChartPlot user = Plots.newBarChartPlot(userdata, colors.get(1), "Feature selected by you");
+        BarChartPlot a1 = Plots.newBarChartPlot(a1data, colors.get(2), "Feature selected by Algo. 1");
+        BarChartPlot a2 = Plots.newBarChartPlot(a2data, colors.get(3), "Feature selected by Algo. 2");
+        BarChart chart = GCharts.newBarChart(user, a1, a2);
+
+        // Defining axis info and styles
+        AxisStyle axisStyle = AxisStyle.newAxisStyle(BLACK, 13, AxisTextAlignment.CENTER);
+        AxisLabels eval = AxisLabelsFactory.newAxisLabels("Evaluations", 50.0);
+        eval.setAxisStyle(axisStyle);
+        AxisLabels evals = AxisLabelsFactory.newAxisLabels("1TP Rate", "FP Rate", "1Precision", "1Recall", "1F-Measure", "ROC Area");
+        evals.setAxisStyle(axisStyle);
+        AxisLabels val = AxisLabelsFactory.newAxisLabels("Accuracy value", 50.0);
+        val.setAxisStyle(axisStyle);
+        AxisLabels vals = AxisLabelsFactory.newNumericRangeAxisLabels(0.0, 1.0);
+        vals.setAxisStyle(axisStyle);
+
+
+        // Adding axis info to chart.
+        chart.addXAxisLabels(evals);
+        chart.addXAxisLabels(eval);
+        chart.addYAxisLabels(vals);
+//        chart.addYAxisLabels(val);
+//        chart.addTopAxisLabels(evals);
+        chart.setHorizontal(false);
+        chart.setSize(800, 350);
+        chart.setSpaceBetweenGroupsOfBars(20);
+
+//        chart.setTitle("2008 Beijing Olympics Medal Count", BLACK, 16);
+        chart.setGrid(800, 20, 3, 2);
+//        chart.setBackgroundFill(Fills.newSolidFill(LIGHTGREY));
+//        LinearGradientFill fill = Fills.newLinearGradientFill(0, Color.newColor("E37600"), 100);
+//        fill.addColorAndOffset(Color.newColor("DC4800"), 0);
+//        chart.setAreaFill(fill);
+        String url = chart.toURLString();
+		
+		
+		
+		
+		return url;
+	}
 	
 
 }

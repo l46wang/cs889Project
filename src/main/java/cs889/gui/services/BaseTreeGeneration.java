@@ -12,12 +12,15 @@ import weka.classifiers.Evaluation;
 import weka.classifiers.trees.J48;
 import weka.core.Instances;
 import weka.gui.treevisualizer.PlaceNode2;
+import weka.gui.treevisualizer.TreeDisplayEvent;
+import weka.gui.treevisualizer.TreeDisplayListener;
 import weka.gui.treevisualizer.TreeVisualizer;
 import cs889.gui.interactiveFeatureSelection.PreselectionPanel;
 import cs889.gui.utility.FeatureSelection;
 import cs889.gui.utility.FeatureSelectionUtil;
 
 public class BaseTreeGeneration {
+		
 	public static void generateTreeA2() throws Exception{
 		J48 cls = new J48();
 	    Instances ins = PreselectionPanel.a2SelectedInstances;
@@ -78,7 +81,7 @@ public class BaseTreeGeneration {
 	
 	
 	
-	public static void generateTree() throws Exception{
+	public static String generateTree() throws Exception{
 		J48 cls = new J48();
 		String[] options = {"-L", "True"};
 		cls.setOptions(options);
@@ -96,9 +99,10 @@ public class BaseTreeGeneration {
 	     System.out.println("-----------------");
 	     
 //	     System.out.println(PlaceNode2());
-	     TreeVisualizer tv = new TreeVisualizer(null,
+	     TreeVisualizer tv = new TreeVisualizer(new RemoveAtt(),
 	         cls.graph(),
-	         new PlaceNode2());
+	         new PlaceNode2()
+	         );
 	     jf.getContentPane().add(tv, BorderLayout.CENTER);
 	     jf.addWindowListener(new java.awt.event.WindowAdapter() {
 	       public void windowClosing(java.awt.event.WindowEvent e) {
@@ -108,7 +112,20 @@ public class BaseTreeGeneration {
 	 
 	     jf.setVisible(true);
 	     tv.fitToScreen();
+	     
+	     return FeatureSelectionUtil.selectedLabel;
 	}
 	
+	
+}
+
+class RemoveAtt implements TreeDisplayListener{
+
+	@Override
+	public void userCommand(TreeDisplayEvent e) {
+		// TODO Auto-generated method stub
+//		System.out.println(e.getID());
+		FeatureSelectionUtil.selectedLabel = e.getID();
+	}
 	
 }

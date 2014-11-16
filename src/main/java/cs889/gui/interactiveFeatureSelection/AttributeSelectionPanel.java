@@ -306,8 +306,9 @@ public class AttributeSelectionPanel
   protected String m_PatternRegEx = "";
   
   
-  protected JButton m_VisualizedTreeButton = new JButton("Visualized Rules");
+  protected JButton m_VisualizedTreeButton = new JButton("Visualize Rules");
   protected JButton m_VisualizedResultButton = new JButton("Result");
+  protected JButton m_VisualizedAllResultButton = new JButton("Visualize all Results");
   
   /**
    * Creates the attribute selection panel with no initial instances.
@@ -335,8 +336,27 @@ public class AttributeSelectionPanel
     m_VisualizedTreeButton.setMnemonic('V');
     panel.add(m_VisualizedTreeButton);
     panel.add(m_VisualizedResultButton);
+    panel.add(m_VisualizedAllResultButton);
     add(panel, BorderLayout.WEST);
     //m_VisualizedTreeButton.addActionListener(new TreeGenerationListener(m_Model.m_Instances));
+    
+    m_VisualizedAllResultButton.addActionListener(new ActionListener() {
+
+		@Override
+		public void actionPerformed(ActionEvent arg2) {
+			// TODO Auto-generated method stub
+			try {
+				ResGraphGeneration.evalOutputAll();
+			}
+			catch (Exception e){
+				e.printStackTrace();
+			}
+		}
+    	
+    	
+    	
+    });
+    
     
     m_VisualizedResultButton.addActionListener(new ActionListener() {
 		
@@ -358,7 +378,10 @@ public class AttributeSelectionPanel
 		public void actionPerformed(ActionEvent arg0) {
 			// TODO Auto-generated method stub
 			try {
-				BaseTreeGeneration.generateTree();
+				String s = BaseTreeGeneration.generateTree();
+				if(s != null) {
+					System.out.println(s);
+				}
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
