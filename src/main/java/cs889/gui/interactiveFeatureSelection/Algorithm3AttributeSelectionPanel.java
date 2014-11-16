@@ -57,6 +57,7 @@ import cs889.gui.featureSelection.event.FeatureLoadListener;
 import cs889.gui.interactiveFeatureSelection.AttributeSelectionPanel.AttributeTableModel;
 import cs889.gui.services.BaseTreeGeneration;
 import cs889.gui.services.ResGraphGeneration;
+import cs889.gui.services.RuleGeneration;
 import cs889.gui.utility.FeatureSelection;
 import cs889.gui.utility.FeatureSelectionUtil;
 
@@ -262,7 +263,7 @@ public class Algorithm3AttributeSelectionPanel
   /** The current regular expression. */
   protected String m_PatternRegEx = "";
   
-  
+  protected JButton m_ViewRulesButton = new JButton("View Rules");
   protected JButton m_VisualizedTreeButton = new JButton("Visualized Rules");
   protected JButton m_VisualizedResButton = new JButton(" Results");
   
@@ -290,9 +291,23 @@ public class Algorithm3AttributeSelectionPanel
     add(new JScrollPane(m_Table), BorderLayout.CENTER);
     JPanel panel = new JPanel(new FlowLayout());
     m_VisualizedTreeButton.setMnemonic('V');
+    m_ViewRulesButton.setMnemonic('R');
+    panel.add(m_ViewRulesButton);
     panel.add(m_VisualizedTreeButton);
     panel.add(m_VisualizedResButton);
     add(panel, BorderLayout.SOUTH);
+    m_ViewRulesButton.addActionListener(new ActionListener(){
+    	@Override
+		public void actionPerformed(ActionEvent arg0) {
+			// TODO Auto-generated method stub
+			try {
+				RuleGeneration.createRulesA3();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+    });
     m_VisualizedTreeButton.addActionListener(
     		new ActionListener(){
     	

@@ -154,11 +154,11 @@ Associator=weka.associations.Apriori
 
 # the default attribute evaluator, including options
 # (default is CfsSubsetEval)
-ASEvaluation=weka.attributeSelection.CfsSubsetEval
+ASEvaluation=weka.attributeSelection.InfoGainAttributeEval
 
 # the default attribute selection search scheme, including options
 # (default is BestFirst)
-ASSearch=weka.attributeSelection.BestFirst
+ASSearch=weka.attributeSelection.Ranker
 
 # the default test mode in the attribute selection tab 
 # (according to "testMode" variable in startAttributeSelection method)

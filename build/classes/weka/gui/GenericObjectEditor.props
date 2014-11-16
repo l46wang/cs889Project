@@ -68,20 +68,23 @@ weka.core.neighboursearch.balltrees.BallTreeConstructor=\
  
 # Lists the ASEvaluations I want to choose from
 weka.attributeSelection.ASEvaluation=\
- weka.attributeSelection.CfsSubsetEval,\
- weka.attributeSelection.ChiSquaredAttributeEval,\
- weka.attributeSelection.ClassifierSubsetEval,\
- weka.attributeSelection.ConsistencySubsetEval,\
- weka.attributeSelection.CostSensitiveAttributeEval,\
- weka.attributeSelection.CostSensitiveSubsetEval,\
- weka.attributeSelection.FilteredAttributeEval,\
- weka.attributeSelection.FilteredSubsetEval,\
- weka.attributeSelection.GainRatioAttributeEval,\
- weka.attributeSelection.InfoGainAttributeEval,\
- weka.attributeSelection.LatentSemanticAnalysis,\
+weka.attributeSelection.InfoGainAttributeEval,\
  weka.attributeSelection.OneRAttributeEval,\
- weka.attributeSelection.PrincipalComponents,\
- weka.attributeSelection.ReliefFAttributeEval,\
+weka.attributeSelection.ReliefFAttributeEval	
+ #weka.attributeSelection.CfsSubsetEval,\
+# weka.attributeSelection.ChiSquaredAttributeEval,\
+# weka.attributeSelection.ClassifierSubsetEval,\
+ #weka.attributeSelection.ConsistencySubsetEval,\
+ #weka.attributeSelection.CostSensitiveAttributeEval,\
+ #weka.attributeSelection.CostSensitiveSubsetEval,\
+ #weka.attributeSelection.FilteredAttributeEval,\
+# weka.attributeSelection.FilteredSubsetEval,\
+# weka.attributeSelection.GainRatioAttributeEval,\
+ #weka.attributeSelection.InfoGainAttributeEval,\
+# weka.attributeSelection.LatentSemanticAnalysis,\
+ #weka.attributeSelection.OneRAttributeEval,\
+# weka.attributeSelection.PrincipalComponents,\
+ #,\
  weka.attributeSelection.SVMAttributeEval,\
  weka.attributeSelection.SymmetricalUncertAttributeEval,\
  weka.attributeSelection.WrapperSubsetEval

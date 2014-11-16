@@ -68,7 +68,11 @@ public class ResGraphGeneration {
 		J48 cls = new J48();
 	    //Instances ins = new Instances(new BufferedReader(new FileReader(FeatureSelection.fileName))); 
 		ins.setClassIndex(ins.numAttributes() - 1);
-	    cls.buildClassifier(ins);
+		cls.setBinarySplits(true);
+		cls.setMinNumObj(10);
+	     cls.buildClassifier(ins);
+		
+//	    cls.buildClassifier(ins);
 		
 	    Evaluation eval = new Evaluation(ins);
 	    Random rand = new Random(1);  // using seed = 1

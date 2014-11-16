@@ -119,7 +119,7 @@ public class J48
   implements OptionHandler, Drawable, Matchable, Sourcable, 
              WeightedInstancesHandler, Summarizable, AdditionalMeasureProducer, 
              TechnicalInformationHandler {
-
+	
   /** for serialization */
   static final long serialVersionUID = -217733168393644444L;
 
@@ -156,6 +156,7 @@ public class J48
 
   /** Random number seed for reduced-error pruning. */
   private int m_Seed = 1;
+
 
   /**
    * Returns a string describing classifier

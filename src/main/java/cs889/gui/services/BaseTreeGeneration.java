@@ -7,6 +7,9 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Random;
 
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+
 import weka.classifiers.Classifier;
 import weka.classifiers.Evaluation;
 import weka.classifiers.trees.J48;
@@ -23,6 +26,8 @@ public class BaseTreeGeneration {
 		J48 cls = new J48();
 	    Instances ins = PreselectionPanel.a2SelectedInstances;
 		ins.setClassIndex(ins.numAttributes() - 1);
+		cls.setBinarySplits(true);
+		cls.setMinNumObj(10);
 	     cls.buildClassifier(ins);
 	     
 	     FeatureSelection.log4jA2.debug("Activity: view Tree");
@@ -52,10 +57,14 @@ public class BaseTreeGeneration {
 	    Instances ins = PreselectionPanel.a3SelectedInstances;
 	 
 		ins.setClassIndex(ins.numAttributes() - 1);
+		cls.setBinarySplits(true);
+		cls.setMinNumObj(10);
 	     cls.buildClassifier(ins);
 	 
 	     FeatureSelection.log4jA3.debug("Activity: view Tree");
 	     FeatureSelectionLog.logResult(ins, FeatureSelection.log4jA3);
+	     
+	     
 	     
 	     // display classifier
 	     final javax.swing.JFrame jf = 
@@ -84,6 +93,8 @@ public class BaseTreeGeneration {
 	    	System.out.println(ins.attribute(i).name());
 	    }
 		ins.setClassIndex(ins.numAttributes() - 1);
+		cls.setBinarySplits(true);
+		cls.setMinNumObj(10);
 	     cls.buildClassifier(ins);
 	 
 	     FeatureSelection.log4jA1.debug("Activity: view Tree");
@@ -108,7 +119,7 @@ public class BaseTreeGeneration {
 	     tv.fitToScreen();
 	}
 	
-	
+
 	
 	public static void generateTree() throws Exception{
 		J48 cls = new J48();
@@ -119,8 +130,13 @@ public class BaseTreeGeneration {
 	     FeatureSelectionLog.logResult(ins, FeatureSelection.log4jUser);
 	    
 		ins.setClassIndex(ins.numAttributes() - 1);
+		cls.setBinarySplits(true);
+		cls.setMinNumObj(10);
 	     cls.buildClassifier(ins);
-	 
+	     
+	     System.out.println("====================================");
+	     System.out.println(cls.toString());
+	     System.out.println("====================================");
 	     // display classifier
 	     final javax.swing.JFrame jf = 
 	       new javax.swing.JFrame("Weka Classifier Tree Visualizer: J48");
@@ -143,6 +159,7 @@ public class BaseTreeGeneration {
 	 
 	     jf.setVisible(true);
 	     tv.fitToScreen();
+	     
 	}
 	
 	

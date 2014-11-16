@@ -51,13 +51,17 @@ public class FeatureSelectionLog {
 		J48 cls = new J48();
 	    //Instances ins = new Instances(new BufferedReader(new FileReader(FeatureSelection.fileName))); 
 		ins.setClassIndex(ins.numAttributes() - 1);
-	    cls.buildClassifier(ins);
+		cls.setBinarySplits(true);
+		cls.setMinNumObj(10);
+	     cls.buildClassifier(ins);
 		
 	    Evaluation eval = new Evaluation(ins);
 	    Random rand = new Random(1);  // using seed = 1
 	    
 	    eval.crossValidateModel(cls, ins, FeatureSelectionUtil.FOLDS, rand);
 	    System.out.println(eval.toClassDetailsString());
+	    
+	    
 	    
 	    int _numOfClasses = ins.numClasses();
 	    double[][] res = new double[_numOfClasses + 1][7];
