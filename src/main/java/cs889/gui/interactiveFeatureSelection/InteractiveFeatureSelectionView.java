@@ -210,7 +210,7 @@ public class InteractiveFeatureSelectionView extends JPanel implements FeatureLo
     panel2
     .setBorder(BorderFactory.createCompoundBorder(
       BorderFactory
-        .createTitledBorder("Algorithm1 Feature Selection"),
+        .createTitledBorder("InformationGain Top Selection"),
       BorderFactory.createEmptyBorder(0, 5, 5, 5)));
     panel2.add(m_A1AttPanel, BorderLayout.WEST);
     panel3.add(panel2);
@@ -229,7 +229,7 @@ public class InteractiveFeatureSelectionView extends JPanel implements FeatureLo
     panel2
     .setBorder(BorderFactory.createCompoundBorder(
       BorderFactory
-        .createTitledBorder("Algorithm2 Feature Selection"),
+        .createTitledBorder("Relief Top Selection"),
       BorderFactory.createEmptyBorder(0, 5, 5, 5)));
     panel2.add(m_A2AttPanel, BorderLayout.WEST);
     panel3.add(panel2);
@@ -247,7 +247,7 @@ public class InteractiveFeatureSelectionView extends JPanel implements FeatureLo
     panel2
     .setBorder(BorderFactory.createCompoundBorder(
       BorderFactory
-        .createTitledBorder("Algorithm3 Feature Selection"),
+        .createTitledBorder("OneR Top Selection"),
       BorderFactory.createEmptyBorder(0, 5, 5, 5)));
     panel2.add(m_A3AttPanel, BorderLayout.WEST);
     panel3.add(panel2);
@@ -606,8 +606,7 @@ public class InteractiveFeatureSelectionView extends JPanel implements FeatureLo
       // uncomment to disable the memory management:
       // m_Memory.setEnabled(false);
 
-      final JFrame jf = new JFrame(Messages.getInstance().getString(
-        "SqlViewer_Main_JFrame_Text"));
+      final JFrame jf = new JFrame("CS889 Interactive Feature Selection");
       m_Viewer = new InteractiveFeatureSelectionView(jf);
       jf.getContentPane().setLayout(new BorderLayout());
       jf.getContentPane().add(m_Viewer, BorderLayout.CENTER);

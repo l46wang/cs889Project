@@ -110,3 +110,52 @@ above,0.872,0.201,0.799,0.128,0.8126747437092264,0.872,0.8412928123492522
 below,0.799,0.128,0.872,0.201,0.8619201725997843,0.799,0.829268292682927
 Weighted Result,0.8355,0.1645,0.8355,0.1645,0.8372974581545053,0.8355,0.8352805525160897
 
+2014-11-16 11:51:23,405 - cs889.gui.interactiveFeatureSelection.AttributeSelectionPanel - DEBUG - Activity: view Rules
+2014-11-16 11:51:23,408 - cs889.gui.interactiveFeatureSelection.AttributeSelectionPanel - DEBUG - The current selected features are: education_AHGA,major_occupation_code_AMJOCC,occupation_code_ADTOCC,age_AAGE,detailed_household_and_family_stat_HHDFMX,Class
+2014-11-16 11:51:23,775 - cs889.gui.interactiveFeatureSelection.AttributeSelectionPanel - DEBUG - 
+above,0.859,0.207,0.793,0.141,0.8058161350844277,0.859,0.8315585672797676
+below,0.793,0.141,0.859,0.207,0.8490364025695931,0.793,0.8200620475698034
+Weighted Result,0.826,0.174,0.826,0.174,0.8274262688270104,0.826,0.8258103074247856
+
+2014-11-16 11:51:46,298 - cs889.gui.interactiveFeatureSelection.AttributeSelectionPanel - DEBUG - Activity: view Rules
+2014-11-16 11:51:46,298 - cs889.gui.interactiveFeatureSelection.AttributeSelectionPanel - DEBUG - The current selected features are: education_AHGA,major_occupation_code_AMJOCC,occupation_code_ADTOCC,age_AAGE,detailed_household_and_family_stat_HHDFMX,Class
+2014-11-16 11:51:46,487 - cs889.gui.interactiveFeatureSelection.AttributeSelectionPanel - DEBUG - 
+above,0.859,0.207,0.793,0.141,0.8058161350844277,0.859,0.8315585672797676
+below,0.793,0.141,0.859,0.207,0.8490364025695931,0.793,0.8200620475698034
+Weighted Result,0.826,0.174,0.826,0.174,0.8274262688270104,0.826,0.8258103074247856
+
+2014-11-16 11:53:54,655 - cs889.gui.interactiveFeatureSelection.AttributeSelectionPanel - DEBUG - Activity: view Tree
+2014-11-16 11:53:54,655 - cs889.gui.interactiveFeatureSelection.AttributeSelectionPanel - DEBUG - The current selected features are: education_AHGA,major_occupation_code_AMJOCC,occupation_code_ADTOCC,age_AAGE,detailed_household_and_family_stat_HHDFMX,Class
+2014-11-16 11:53:54,775 - cs889.gui.interactiveFeatureSelection.AttributeSelectionPanel - DEBUG - 
+above,0.859,0.207,0.793,0.141,0.8058161350844277,0.859,0.8315585672797676
+below,0.793,0.141,0.859,0.207,0.8490364025695931,0.793,0.8200620475698034
+Weighted Result,0.826,0.174,0.826,0.174,0.8274262688270104,0.826,0.8258103074247856
+
+2014-11-16 11:59:27,446 - cs889.gui.interactiveFeatureSelection.AttributeSelectionPanel - DEBUG - Activity: view Tree
+2014-11-16 11:59:27,447 - cs889.gui.interactiveFeatureSelection.AttributeSelectionPanel - DEBUG - The current selected features are: education_AHGA,major_occupation_code_AMJOCC,occupation_code_ADTOCC,age_AAGE,detailed_household_and_family_stat_HHDFMX,citizenship_PRCITSHP,reason_for_unemployment_AUNTYPE,taxable_income_amount_TAXINC,Class
+2014-11-16 11:59:27,638 - cs889.gui.interactiveFeatureSelection.AttributeSelectionPanel - DEBUG - 
+above,0.86,0.21,0.79,0.14,0.8037383177570093,0.86,0.8309178743961353
+below,0.79,0.14,0.86,0.21,0.8494623655913979,0.79,0.8186528497409327
+Weighted Result,0.825,0.175,0.825,0.175,0.8266003416742036,0.825,0.8247853620685339
+
+2014-11-16 12:19:15,445 - cs889.gui.interactiveFeatureSelection.AttributeSelectionPanel - DEBUG - Activity: view Tree
+2014-11-16 12:19:15,445 - cs889.gui.interactiveFeatureSelection.AttributeSelectionPanel - DEBUG - The current selected features are: education_AHGA,major_occupation_code_AMJOCC,occupation_code_ADTOCC,age_AAGE,detailed_household_and_family_stat_HHDFMX,citizenship_PRCITSHP,reason_for_unemployment_AUNTYPE,taxable_income_amount_TAXINC,Class
+2014-11-16 12:19:15,538 - cs889.gui.interactiveFeatureSelection.AttributeSelectionPanel - DEBUG - 
+above,0.86,0.21,0.79,0.14,0.8037383177570093,0.86,0.8309178743961353
+below,0.79,0.14,0.86,0.21,0.8494623655913979,0.79,0.8186528497409327
+Weighted Result,0.825,0.175,0.825,0.175,0.8266003416742036,0.825,0.8247853620685339
+
+2014-11-16 12:19:20,521 - cs889.gui.interactiveFeatureSelection.AttributeSelectionPanel - DEBUG - Activity: view Result
+2014-11-16 12:19:20,521 - cs889.gui.interactiveFeatureSelection.AttributeSelectionPanel - DEBUG - The current selected features are: education_AHGA,major_occupation_code_AMJOCC,occupation_code_ADTOCC,age_AAGE,detailed_household_and_family_stat_HHDFMX,citizenship_PRCITSHP,reason_for_unemployment_AUNTYPE,taxable_income_amount_TAXINC,Class
+2014-11-16 12:19:20,623 - cs889.gui.interactiveFeatureSelection.AttributeSelectionPanel - DEBUG - 
+above,0.86,0.21,0.79,0.14,0.8037383177570093,0.86,0.8309178743961353
+below,0.79,0.14,0.86,0.21,0.8494623655913979,0.79,0.8186528497409327
+Weighted Result,0.825,0.175,0.825,0.175,0.8266003416742036,0.825,0.8247853620685339
+
+2014-11-16 21:42:07,940 - cs889.gui.interactiveFeatureSelection.AttributeSelectionPanel - DEBUG - Activity: view Rules
+2014-11-16 21:42:07,952 - cs889.gui.interactiveFeatureSelection.AttributeSelectionPanel - DEBUG - The current selected features are: education_AHGA,major_occupation_code_AMJOCC,occupation_code_ADTOCC,age_AAGE,detailed_household_and_family_stat_HHDFMX,tax_filer_status_FILESTAT,major_industry_code_AMJIND,detailed_household_summary_in_household_HHDREL,veterans_benefits_VETYN,class_of_worker_ACLSWKR,Class
+2014-11-16 21:42:08,391 - cs889.gui.interactiveFeatureSelection.AttributeSelectionPanel - DEBUG - 
+above,0.84,0.222,0.778,0.16,0.7909604519774012,0.84,0.8147429679922404
+below,0.778,0.16,0.84,0.222,0.8294243070362474,0.778,0.8028895768833849
+Weighted Result,0.809,0.191,0.809,0.191,0.8101923795068242,0.809,0.8088162724378127
+
